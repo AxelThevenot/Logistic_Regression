@@ -216,14 +216,3 @@ if __name__ == '__main__':
 
     plt.show() # show the plot
 
-    '''
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    
-    https://math.stackexchange.com/questions/477207/derivative-of-cost-function-for-logistic-regression
-    
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    NE SURTOUT PAS SUPPRIMER CE LIEN !!!
-    '''
