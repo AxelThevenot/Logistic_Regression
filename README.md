@@ -10,9 +10,9 @@ The logistic regression is a binomial regression model. As every binomial regres
 The logistic regression is used to predict a variable, which is not quantitative. It is qualitative. To numerically convert the qualitative variable, it uses the sigmoid function, which returns a squashed value between 0 and 1. In other word, the sigmoid function is used to give a probability a sample has to possess a distinct value of the qualitative variable. Take the example of a model with only one parameter, notate `z`, and we want to predict if a sample is healthy/sick (refer to the graph below to a better understanding). The logistic regression aims to find the best weight according to `z` to fit the best the reality by the sigmoid value.
 That way, the sigmoid function will return a value between 0 and 1, which will be the probability for a given point to be healthy.
 So for a sample of a `z` parameter value, `0 < σ(z) < 1` and :
-* `σ(z) > ½` →  the point is classified as healthy
-* `σ(z) < ½` →  the point is classified as healthy
-* `σ(z) = ½` →  the classification is not possible : choose arbitrarily a value 
+* `σ(z) > ½` →  the point is classified as healthy.
+* `σ(z) < ½` →  the point is classified as healthy.
+* `σ(z) = ½` →  the classification is not possible : choose arbitrarily a value.
 
 ![sigmoid](/src/sigmoid.png)
 
@@ -22,22 +22,31 @@ To sum up, the logistic regression uses a sigmoid function to give a probability
 
 The weight will tell how smooth is the slope.
 
-A bias value is added to the parameters and associated weights. It allows to shift the sigmoid function to the left or right 
+A bias value is added to the parameters and associated weights. It allows to shift the sigmoid function to the left or right. 
 
 
 ![maths logistic](/src/logistic.png)
 
 ## Gradient descent : Introduction to Deep Learning
 
+To make the logistic regression fit the best with the training set, it works step by step. A step is named an epcoh. For each epoch, the weights associated to the parameters are updated according to their influence on the current cost function value. It seeks to reach the global minimum of the cost, which correspond to the best fit with the training samples. In another words, it needs to calculate the partial derivative of the cost function by each weight. This way, it will know what is the slope value. Visually speaking, a positive value of the slope means a left shift is needed and vice-versa. To still speak visually, the cost function is a bowl and the goal is to reach its bottom, which is the best fitting spot.
+So we had to calculate the gradient (partial derivatives of the cost function by the weights).
+
 ![maths gradient](/src/gradient.png)
+
+As we now know how to calculate the gradients, we have to minimize the cost function value. To ensure this, an updates of the weight values is required by substract their associated gradients. 
+
 ![maths gradient descent](/src/gradient_descent.png)
 
 On one hand, if you set a learning rate too low, learning will take too long.
 
 On the other hand, if you set a learning rate too high, the variable's value jumps randomly whitout reaching the bottom of the cost function.
 
-The aim is therefore to choose (experimentally most of the time) a learning rate that is neither too high nor too low
+The aim is therefore to choose (experimentally most of the time) a learning rate that is neither too high nor too low.
+
 ![learning rate](/src/learning_rate.png)
+
+
 ## Example of French students
 
 
