@@ -1,5 +1,3 @@
-[WORK IN PROGRESS...]
-
 ## Logistic regression principle
 The logistic regression is a binomial regression model. As every binomial regression, it tends to model a mathematical model according to a vector of observations, which are the variables or parameters. The logistic regression seeks to find an indicator variables such as win/fail, alive/dead according to the parameters. Like other regression models, it is used both to predict a phenomenon and to explain it. The logistic regression is commonly used in Machine Learning and is also one of the simpliest neuron in Deep  Learning applications. The logistic regression is very close to the [linear regression](https://github.com/AxelThevenot/Linear_Regression). Contrary to the linear regression, where the variable to explain/predict is quantitative, the linear regression is used when the variables to explain/predict is qualitative.
 
@@ -51,7 +49,7 @@ The aim is therefore to choose (experimentally most of the time) a learning rate
 
 To illustrate the logistic regression algorithm I will take an easy example. Easy means with only 2 parameters. This way, we will be able to display outputs on a graph without reducing the dimensions. It will be more pleasant to look at and therefore to interpret.
 
-In this case, we have a dataset of average mark in maths and French of 300 French students during the year 2018. We also know what final exam they passed (Assuming they took only maths and French final exams at the end of the year and that we know the average marks only for those students, who had passed at least one of the exams). The goal of the logistic regression here will be to predict who will pass or not both exams according to its maths and french average mark.
+In this case (also used for my [KNN algorithm](https://github.com/AxelThevenot/K-Nearest_Neighbors/blob/master/README.md)), we have a dataset of average mark in maths and French of 300 French students during the year 2018. We also know what final exam they passed (Assuming they took only maths and French final exams at the end of the year and that we know the average marks only for those students, who had passed at least one of the exams). The goal of the logistic regression here will be to predict who will pass or not both exams according to its maths and french average mark.
 The dataset is a .csv file and its associated spreadsheet is represented below. The last column is for the label. The label is for the classification : `0`, `1` and `2` respectively mean pass the French exam, pass the maths exam and pass both.
 
 
