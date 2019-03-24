@@ -89,8 +89,8 @@ def step_logistic_gradient(X, Y, learning_rate):
     # Update gradients
     # gradient weights uptdate rule dJ/dweigth_i = 1/n * sum((h(x_i) - y_i) * x_i)
     # gradient bias uptdate rule dJ/dbias = 1/n * sum((h(x_i) - y_i))
-    loss = h - Y
-    gradient = np.divide(np.dot(loss, X), N)
+    error = h - Y
+    gradient = np.divide(np.dot(error, X), N)
 
     # Update weights
     # weights update rule weigth_i := weigth_i - learning_rate * (dJ/dweigth_i)
@@ -98,8 +98,8 @@ def step_logistic_gradient(X, Y, learning_rate):
     weights -= learning_rate * gradient[:-1]
     bias -= learning_rate * gradient[-1]
 
-    # calculation of the cost = loss²
-    cost = np.sum(loss**2)
+    # calculation of the cost = error²
+    cost = np.sum(error**2)
 
     return weights, bias, cost
 
