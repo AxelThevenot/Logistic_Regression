@@ -82,9 +82,12 @@ def step_logistic_gradient(X, Y, learning_rate):
 
     # calculation of the z value as z = weigths * x + b
     z = np.dot(X, np.hstack((weights, bias)))
-
+    
     # calculation of the sigmoid value of z
     h = sigmoid(z)
+    
+    # calculation of the cost
+    cost = sum(- Y * np.log(h) - (1 - Y) * np.log(1 - h))
 
     # Update gradients
     # gradient weights uptdate rule dJ/dweigth_i = 1/n * sum((h(x_i) - y_i) * x_i)
@@ -97,10 +100,8 @@ def step_logistic_gradient(X, Y, learning_rate):
     # bias update rule bias := bias - learning_rate * (dJ/dbias)
     weights -= learning_rate * gradient[:-1]
     bias -= learning_rate * gradient[-1]
-
-    # calculation of the cost = error²
-    cost = np.sum(error**2)
-
+    
+    
     return weights, bias, cost
 
 def logistic_gradient(frame_number):
