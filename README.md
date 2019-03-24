@@ -49,13 +49,39 @@ The aim is therefore to choose (experimentally most of the time) a learning rate
 
 ## Example of French students
 
+To illustrate the logistic regression algorithm I will take an easy example. Easy means with only 2 parameters. This way, we will be able to display outputs on a graph without reducing the dimensions. It will be more pleasant to look at and therefore to interpret.
+
+In this case, we have a dataset of average mark in maths and French of 300 French students during the year 2018. We also know what final exam they passed (Assuming they took only maths and French final exams at the end of the year and that we know the average marks only for those students, who had passed at least one of the exams). The goal of the logistic regression here will be to predict who will pass or not both exams according to its maths and french average mark.
+The dataset is a .csv file and its associated spreadsheet is represented below. The last column is for the label. The label is for the classification : `0`, `1` and `2` respectively mean pass the French exam, pass the maths exam and pass both.
+
+
+Of course a simple logistic regression can not classify into 3 differents categories as it only output a probability to belong to one category. So to predict we will have to modify the label (`0`, `1` and `2`) :
+* `0` and `1` become `0`
+* `2` become `1`
+So `0` now means to fail at least of the two exam and `1` to pass both.
+
+![Dataset](/src/dataset.png)
+
+To that end, we could use the [One vs All](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/one-vs-all) process. It simply use the logistic regression algorithm to test the probability for a sample to be on each category. The predicted categroy is therefore the one with the highest probability.
 
 ## Pseudo Code
 
 Gradient descent method for logistic regression
 
 ```
+Give to the weigths 'w' and to the bias 'b' a starting value (arbitrarily or randomly)
 
+Choose the learning rate 'L'
+
+While the minimum chosen cost or the number of maximum epoch chosen are not reaching
+    
+    Calculate the error (sum of each point's error)
+    
+    Calculate grad(w) for each weight and grad(b)
+    
+    Update w as w = w - grad(w) * L for each weight
+    
+    Update b as b = b - grad(b) * L
 ```
 
 ## Let's start with python
@@ -77,9 +103,9 @@ import matplotlib.font_manager as font_manager  # to change the font size
 ### Variables
 
 As usual I made a region to change the variables to an easier understanding. Variables that can be manually changed are those, which are in uppercases. They are classed as variables for : 
-* 
-* 
-* 
+* Features (parameters) and label (category)
+* Weights and bias
+* Gradient descent process
 * Rendering the algorithm output
 
 ```python
@@ -108,7 +134,7 @@ color = {1: '#2F9599', 0: '#999999'}  # category's color for points
 
 ### Load dataset
 
-
+We need to load the dataset. The function `loadDataset()` takes the .csv file name as argument. It removes the headers first. Then it returns an matrix containing feature's values and a label array.
 
 ```python
 def load_dataset(filename):
@@ -137,9 +163,9 @@ def load_dataset(filename):
         return X, Y
 ```
 
-
 ### Logistic regression
 
+The cornerstone of the logistic regression is the sigmoid function. So we start by its implementation.
 
 ```python
 def sigmoid(z):
@@ -151,7 +177,7 @@ def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 ```
 
-
+Then the `step_logistic_gradient()` calculate the error, the weights an bias gradients. Finally it updates the weights and bias values according to their gradient and to the learning rate chosen in the variable's region. It returns the updates weights and bias. 
 
 ```python
 def step_logistic_gradient(X, Y, learning_rate):
@@ -189,6 +215,13 @@ def step_logistic_gradient(X, Y, learning_rate):
     return weights, bias, cost
 ```
 
+At last we create the `logistic_gradient()` function, which will call the `step_logistic_gradient()` while the epoch number `MAX_EPOCH` is not reached. 
+
+This function is a little special as it will be called by the matplotlib.animation object. That's why there is the variable `frame_number` that I will not explain in this page. In my program, we will activate the logistic regression method by pressing the Enter key. Only when the key will be pressed, the `logistic_gradient()` will run the `step_logistic_gradient()` function.
+
+As you may have seen, the `display()` is not written yet. I addition to that, the function, which links the Enter key to the start is also not written. I will be next.
+
+
 ```python
 def logistic_gradient(frame_number):
     """
@@ -215,7 +248,7 @@ def logistic_gradient(frame_number):
 
 ### Display
 
-
+That is the time to add the display() function to render the algorithm. It only shows the samples values and waits for the Enter key too to display the logistic regression curve.
 
 ```python
 def display():
