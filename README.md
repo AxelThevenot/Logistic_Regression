@@ -1,16 +1,31 @@
 [WORK IN PROGRESS...]
 
 ## Logistic regression principle
-
+The logistic regression is a binomial regression model. As every binomial regression, it tends to model a mathematical model according to a vector of observations, which are the variables or parameters. The logistic regression seeks to find an indicator variables such as win/fail, alive/dead according to the parameters. Like other regression models, it is used both to predict a phenomenon and to explain it. The logistic regression is commonly used in Machine Learning and is also one of the simpliest neuron in Deep  Learning applications. The logistic regression is very close to the [linear regression](https://github.com/AxelThevenot/Linear_Regression). Contrary to the linear regression, where the variable to explain/predict is quantitative, the linear regression is used when the variables to explain/predict is qualitative.
 
 ![logistic regression by gradient descent](/src/logistic_regression.gif)
 
 ## Logistic regression application
+
+The logistic regression is used to predict a variable, which is not quantitative. It is qualitative. To numerically convert the qualitative variable, it uses the sigmoid function, which returns a squashed value between 0 and 1. In other word, the sigmoid function is used to give a probability a sample has to possess a distinct value of the qualitative variable. Take the example of a model with only one parameter, notate `z`, and we want to predict if a sample is healthy/sick (refer to the graph below to a better understanding). The logistic regression aims to find the best weight according to `z` to fit the best the reality by the sigmoid value.
+That way, the sigmoid function will return a value between 0 and 1, which will be the probability for a given point to be healthy.
+So for a sample of a `z` parameter value, `0 < σ(z) < 1` and :
+* `σ(z) > ½` →  the point is classified as healthy
+* `σ(z) < ½` →  the point is classified as healthy
+* `σ(z) = ½` →  the classification is not possible : choose arbitrarily a value 
+
 ![sigmoid](/src/sigmoid.png)
+
+The aim of the logistic regression is to minimize the cost function, which is calculating an error like value. Indeed, we can not mathematically calculate an error with a qualitative value. So it uses the `h` squashed value and compares it to the `y` value, which correspond to the true value of the quantitative variable we want to predict. 
+
+To sum up, the logistic regression uses a sigmoid function to give a probability of a sample to have a particular qualitative value according to its parameters. A weigth is associated to each parameter to minimize the cost function, which indicates how much the regression tends to fit the training samples.
+
+The weight will tell how smooth is the slope.
+
+A bias value is added to the parameters and associated weights. It allows to shift the sigmoid function to the left or right 
 
 
 ![maths logistic](/src/logistic.png)
-
 
 ## Gradient descent : Introduction to Deep Learning
 
