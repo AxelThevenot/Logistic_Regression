@@ -5,14 +5,25 @@
 
 ![logistic regression by gradient descent](/src/logistic_regression.gif)
 
-
 ## Logistic regression application
+![sigmoid](/src/sigmoid.png)
+
+
+![maths logistic](/src/logistic.png)
 
 
 ## Gradient descent : Introduction to Deep Learning
 
+![maths gradient](/src/gradient.png)
+![maths gradient descent](/src/gradient_descent.png)
 
-## Thales stock prices case
+On one hand, if you set a learning rate too low, learning will take too long.
+
+On the other hand, if you set a learning rate too high, the variable's value jumps randomly whitout reaching the bottom of the cost function.
+
+The aim is therefore to choose (experimentally most of the time) a learning rate that is neither too high nor too low
+![learning rate](/src/learning_rate.png)
+## Example of French students
 
 
 ## Pseudo Code
@@ -135,21 +146,21 @@ def step_logistic_gradient(X, Y, learning_rate):
 
     # calculation of the sigmoid value of z
     h = sigmoid(z)
-
+    
+    # calculation of the cost
+    cost = sum(- Y * np.log(h) - (1 - Y) * np.log(1 - h))
+    
     # Update gradients
     # gradient weights uptdate rule dJ/dweigth_i = 1/n * sum((h(x_i) - y_i) * x_i)
     # gradient bias uptdate rule dJ/dbias = 1/n * sum((h(x_i) - y_i))
-    loss = h - Y
-    gradient = np.divide(np.dot(loss, X), N)
+    error = h - Y
+    gradient = np.divide(np.dot(error, X), N)
 
     # Update weights
     # weights update rule weigth_i := weigth_i - learning_rate * (dJ/dweigth_i)
     # bias update rule bias := bias - learning_rate * (dJ/dbias)
     weights -= learning_rate * gradient[:-1]
     bias -= learning_rate * gradient[-1]
-
-    # calculation of the cost = loss²
-    cost = np.sum(loss**2)
 
     return weights, bias, cost
 ```
@@ -234,7 +245,7 @@ def display():
             format(round(weights[0], 2), round(weights[1], 2), int(bias))
         label += 'Epoch : {0}\n'.format(epoch)
         label += 'Learning Rate : {0}\n'.format(LEARNING_RATE)
-        label += 'Squared Error : {0}'.format(round(cost, 2))
+        label += 'Cost : {0}'.format(round(cost, 2))
         # add the created legend
         plt_legends.append(mpatches.Patch(color='#8800FF', label=label))
 
