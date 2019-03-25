@@ -9,7 +9,7 @@ The logistic regression is used to predict a variable, which is not quantitative
 That way, the sigmoid function will return a value between 0 and 1, which will be the probability for a given point to be healthy.
 So for a sample of a `z` parameter value, `0 < σ(z) < 1` and :
 * `σ(z) > ½` →  the point is classified as healthy.
-* `σ(z) < ½` →  the point is classified as healthy.
+* `σ(z) < ½` →  the point is classified as sick.
 * `σ(z) = ½` →  the classification is not possible : choose arbitrarily a value.
 
 ![sigmoid](/src/sigmoid.png)
